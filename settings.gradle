@@ -1,5 +1,7 @@
 include ':app'
 include ':extend:arms'
+include ':extend:image'
+include ':extend:markdown'
 
 rootProject.name = "TimeCatThird"
 
