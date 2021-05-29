@@ -9,8 +9,6 @@ import cc.shinichi.library.ImagePreview
 import cc.shinichi.library.view.listener.OnBigImagePageChangeListener
 import cc.shinichi.library.view.listener.OnOriginProgressListener
 import com.luck.picture.lib.PictureSelectionModel
-import com.luck.picture.lib.entity.LocalMedia
-import com.luck.picture.lib.listener.OnResultCallbackListener
 
 /**
  * @author 林学渊
