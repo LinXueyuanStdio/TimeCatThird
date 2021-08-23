@@ -74,7 +74,7 @@ public final class ImageLoader {
     }
 
     @Nullable
-    public BaseImageLoaderStrategy<?> getLoadImgStrategy() {
+    public BaseImageLoaderStrategy getLoadImgStrategy() {
         return mStrategy;
     }
 
@@ -83,7 +83,7 @@ public final class ImageLoader {
      *
      * @param strategy
      */
-    public void setLoadImgStrategy(@NonNull BaseImageLoaderStrategy<?> strategy) {
+    public void setLoadImgStrategy(@NonNull BaseImageLoaderStrategy strategy) {
         Preconditions.checkNotNull(strategy, "strategy == null");
         this.mStrategy = strategy;
     }

@@ -29,6 +29,7 @@ dependencies {
         exclude module: 'rxlifecycle'
     }
     api rootProject.ext.dependencies['rxerrorhandler2']
+    api rootProject.ext.dependencies["rxpermissions2"]
 
     //network
     api(rootProject.ext.dependencies["retrofit"]) {
