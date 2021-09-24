@@ -5,4 +5,5 @@ apply from: "context.gradle"
 include ':app'
 include ':extend:arms'
 include ':extend:image'
+include ':extend:image_preview'
 include ':extend:markdown'

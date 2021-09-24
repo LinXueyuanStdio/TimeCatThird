@@ -5,15 +5,13 @@ apply plugin: 'kotlin-kapt'
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
-    api rootProject.ext.dependencies["kotlin-stdlib"]
-
     //本地和云端图片加载器
     compileOnly rootProject.ext.dependencies["glide"]
 
     //云端图片九宫格 自己实现
 
     //云端图片预览器 支持gif
-    api 'com.github.SherlockGougou:BigImageViewPager:v4_6.0.0'
+    api rootProject.ext.timecat["component-ImagePrevice"]
 
     //本地图片选择器 支持gif video audio
     //本地图片预览器 支持gif video audio

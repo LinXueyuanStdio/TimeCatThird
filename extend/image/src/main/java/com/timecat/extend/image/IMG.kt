@@ -124,15 +124,12 @@ object IMG {
             })
             // 设置查看原图时的百分比样式：库中带有一个样式：ImagePreview.PROGRESS_THEME_CIRCLE_TEXT，使用如下：
             //=================================================================================================
-            .setProgressLayoutId(
-                ImagePreview.PROGRESS_THEME_CIRCLE_TEXT,
-                object : OnOriginProgressListener {
+            .setProgressLayoutId(ImagePreview.PROGRESS_THEME_CIRCLE_TEXT, object : OnOriginProgressListener {
                     override fun progress(parentView: View, progress: Int) {
                         Log.d("dd", "progress: $progress")
                         // 需要找到进度控件并设置百分比，回调中的parentView即传入的布局的根View，可通过parentView找到控件：
 
-                        val progressBar =
-                            parentView.findViewById<ProgressBar>(R.id.sh_progress_view)
+                        val progressBar = parentView.findViewById<ProgressBar>(R.id.sh_progress_view)
                         val textView = parentView.findViewById<TextView>(R.id.sh_progress_text)
                         progressBar.progress = progress
                         val progressText = "$progress%"
