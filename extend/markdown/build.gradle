@@ -15,4 +15,8 @@ dependencies {
     api rootProject.ext.dependencies["kotlinx-coroutines-core"]
 }
 
+android {
+    namespace 'com.timecat.extend.markdown'
+}
+
 apply from: "${project.rootDir}/gradle/library_tail.gradle"

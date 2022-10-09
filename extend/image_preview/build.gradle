@@ -9,11 +9,15 @@ dependencies {
     //云端图片预览器 支持gif
     api rootProject.ext.androidx_lib["appcompat"]
     api rootProject.ext.androidx_lib["design"]
-    api 'androidx.exifinterface:exifinterface:1.3.3'
+    api 'androidx.exifinterface:exifinterface:1.3.4'
     api 'com.davemorrissey.labs:subsampling-scale-image-view:3.10.0'
     api rootProject.ext.dependencies["glide"]
     kapt rootProject.ext.dependencies["glide-compiler"]
     api rootProject.ext.dependencies["glide-loader-okhttp3"]
+}
+
+android {
+    namespace 'cc.shinichi.library'
 }
 
 apply from: "${project.rootDir}/gradle/library_tail.gradle"

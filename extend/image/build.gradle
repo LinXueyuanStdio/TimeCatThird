@@ -21,4 +21,8 @@ dependencies {
     //本地图片九宫格 用 RecyclerView 实现
 }
 
+android {
+    namespace 'com.timecat.extend.image'
+}
+
 apply from: "${project.rootDir}/gradle/library_tail.gradle"

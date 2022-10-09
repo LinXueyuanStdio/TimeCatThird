@@ -64,4 +64,8 @@ dependencies {
     api rootProject.ext.dependencies["timber"]
 }
 
+android {
+    namespace 'com.timecat.extend.arms'
+}
+
 apply from: "${project.rootDir}/gradle/library_tail.gradle"
