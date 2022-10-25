@@ -16,7 +16,7 @@ import java.util.ArrayList
  * @description null
  * @usage null
  */
-internal class LubanEngine : CompressFileEngine {
+class LubanEngine : CompressFileEngine {
     override fun onStartCompress(context: Context, source: ArrayList<Uri>, call: OnKeyValueResultCallbackListener?) {
         Luban.with(context).load(source).ignoreBy(100)
             .setCompressListener(object : OnNewCompressListener {
