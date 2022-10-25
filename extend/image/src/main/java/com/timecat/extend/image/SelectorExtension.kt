@@ -1,9 +1,10 @@
 package com.timecat.extend.image
 
 import android.util.Log
-import com.luck.picture.lib.PictureSelectionModel
+import com.luck.picture.lib.basic.PictureSelectionModel
 import com.luck.picture.lib.entity.LocalMedia
-import com.luck.picture.lib.listener.OnResultCallbackListener
+import com.luck.picture.lib.interfaces.OnResultCallbackListener
+import java.util.ArrayList
 
 /**
  * @author 林学渊
@@ -25,10 +26,8 @@ fun LocalMedia.savablePath(): String? {
     Log.d("LocalMedia", "裁剪:$cutPath")
     Log.d("LocalMedia", "是否开启原图:$isOriginal")
     Log.d("LocalMedia", "原图路径:$originalPath")
-    Log.d("LocalMedia", "Android Q 特有Path:$androidQToPath")
     Log.d("LocalMedia", "----------------")
     return when {
-        androidQToPath != null -> androidQToPath
         path != null -> path
         else -> null
     }
@@ -36,13 +35,13 @@ fun LocalMedia.savablePath(): String? {
 
 fun PictureSelectionModel.selectForResult(onSuccess: (MutableList<LocalMedia>) -> Unit) {
     forResult(object : OnResultCallbackListener<LocalMedia> {
-        override fun onResult(result: MutableList<LocalMedia>?) {
+        override fun onCancel() {
+        }
+
+        override fun onResult(result: ArrayList<LocalMedia>?) {
             result?.let {
                 onSuccess(it)
             }
-        }
-
-        override fun onCancel() {
         }
     })
 }

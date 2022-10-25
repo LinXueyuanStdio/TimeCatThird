@@ -8,7 +8,7 @@ import android.widget.TextView
 import cc.shinichi.library.ImagePreview
 import cc.shinichi.library.view.listener.OnBigImagePageChangeListener
 import cc.shinichi.library.view.listener.OnOriginProgressListener
-import com.luck.picture.lib.PictureSelectionModel
+import com.luck.picture.lib.basic.PictureSelectionModel
 
 /**
  * @author 林学渊
@@ -178,14 +178,11 @@ object IMG {
         // 进入相册 以下是例子：不需要的api可以不写
         return selector
             // 外部传入图片加载引擎，必传项
-            .imageEngine(GlideEngine.createGlideEngine())
+            .setImageEngine(GlideEngine.createGlideEngine())
+            .setCompressEngine(LubanEngine())
             // 主题样式设置 具体参考 values/styles
             // 用法：R.style.picture.white.style v2.3.3后 建议使用setPictureStyle()动态方式
             //.theme(themeId)
-            // 是否开启微信图片选择风格
-            .isWeChatStyle(false)
-            // 是否使用自定义相机
-            .isUseCustomCamera(false)
             // 设置语言，默认中文
             //.setLanguage(language)
             // 动态自定义相册主题
@@ -195,7 +192,7 @@ object IMG {
             // 自定义相册启动退出动画
             //.setPictureWindowAnimationStyle(mWindowAnimationStyle)
             // 图片和视频是否可以同选
-            .isWithVideoImage(true)
+            .isWithSelectVideoImage(true)
             // 最大图片选择数量
             //.maxSelectNum(maxSelectNum)
             // 最小选择数量
@@ -205,15 +202,15 @@ object IMG {
             // 视频最大选择数量，如果没有单独设置的需求则可以不设置，同用maxSelectNum字段
             //.maxVideoSelectNum(1)
             // 每行显示个数
-            .imageSpanCount(4)
+            .setImageSpanCount(4)
             // 未选择数据时点击按钮是否可以返回
-            .isReturnEmpty(false)
+            .isEmptyResultReturn(false)
             // 是否需要处理Android Q 拷贝至应用沙盒的操作，只针对.isCompress(false); && .isEnableCrop(false);有效,默认处理
             //.isAndroidQTransform(false)
             // 设置相册Activity方向，不设置默认使用系统
             //.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED)
             // 是否显示原图控制按钮，如果设置为true则用户可以自由选择是否使用原图，压缩、裁剪功能将会失效
-            .isOriginalImageControl(true)
+            .isOriginalControl(true)
             //.cameraFileName("test.png")    // 重命名拍照文件名、注意这个只在使用相机时可以使用，如果使用相机又开启了压缩或裁剪 需要配合压缩和裁剪文件名api
             //.renameCompressFile("test.png")// 重命名压缩文件名、 注意这个不要重复，只适用于单张图压缩使用
             //.renameCropFileName("test.png")// 重命名裁剪文件名、 注意这个不要重复，只适用于单张图裁剪使用
@@ -228,23 +225,17 @@ object IMG {
             // 查询指定后缀格式资源
             //.querySpecifiedFormatSuffix(PictureMimeType.ofJPEG())
             // 是否可播放音频
-            .isEnablePreviewAudio(true)
+            .isPreviewAudio(true)
             // 是否显示拍照按钮
-            .isCamera(true)
+            .isDisplayCamera(true)
             // 多图裁剪时是否支持跳过，默认支持
             //.isMultipleSkipCrop(false)
             // 图片列表点击 缩放效果 默认true
-            .isZoomAnim(true)
+            .isSelectZoomAnim(true)
             // 拍照保存图片格式后缀,默认jpeg
             //.imageFormat(PictureMimeType.PNG)
             // 是否裁剪
             //.isEnableCrop(true)
-            // 是否压缩
-            .isCompress(true)
-            // 图片压缩后输出质量 0~ 100
-            .compressQuality(80)
-            //同步false或异步true 压缩 默认同步
-            .synOrAsy(true)
             //.queryMaxFileSize(10)// 只查多少M以内的图片、视频、音频  单位M
             //.compressSavePath(getPath())//压缩图片保存地址
             //.sizeMultiplier(0.5f)// glide 加载图片大小 0~1之间 如设置 .glideOverride()无效 注：已废弃
@@ -273,31 +264,10 @@ object IMG {
             .isOpenClickSound(true)
             // 是否传入已选图片
             //.selectionData(mAdapter.getData())
-            // 是否可拖动裁剪框(固定)
-            //.isDragFrame(false)
             //.videoMaxSecond(15)
             //.videoMinSecond(10)
             // 预览图片时 是否增强左右滑动图片体验(图片滑动一半即可看到上一张是否选中)
-            .isPreviewEggs(false)
-            //.cropCompressQuality(90)// 注：已废弃 改用cutOutQuality()
-            // 裁剪输出质量 默认100
-            .cutOutQuality(90)
-            // 小于100kb的图片不压缩
-            .minimumCompressSize(100)
-            //.cropWH()// 裁剪宽高比，设置如果大于图片本身宽高则无效
-            // 裁剪是否可旋转图片
-            //.rotateEnabled(true)
-            // 裁剪是否可放大缩小图片
-            .scaleEnabled(true)
-        // 视频录制质量 0 or 1
-        //.videoQuality()
-        // 录制视频秒数 默认60s
-        //.recordVideoSecond()
-        // 自定义拍照保存路径  注：已废弃
-        //.setOutputCameraPath("/CustomPath")
-        // 结果回调onActivityResult code
-        //.forResult(PictureConfig.CHOOSE_REQUEST)
-        //.forResult()
+            .isPreviewFullScreenMode(true)
     }
 
 }
