@@ -1,6 +1,7 @@
 package com.timecat.extend.image
 
 import android.util.Log
+import com.luck.picture.lib.basic.PictureSelectionCameraModel
 import com.luck.picture.lib.basic.PictureSelectionModel
 import com.luck.picture.lib.entity.LocalMedia
 import com.luck.picture.lib.interfaces.OnResultCallbackListener
@@ -34,6 +35,18 @@ fun LocalMedia.savablePath(): String? {
 }
 
 fun PictureSelectionModel.selectForResult(onSuccess: (MutableList<LocalMedia>) -> Unit) {
+    forResult(object : OnResultCallbackListener<LocalMedia> {
+        override fun onCancel() {
+        }
+
+        override fun onResult(result: ArrayList<LocalMedia>?) {
+            result?.let {
+                onSuccess(it)
+            }
+        }
+    })
+}
+fun PictureSelectionCameraModel.selectForResult(onSuccess: (MutableList<LocalMedia>) -> Unit) {
     forResult(object : OnResultCallbackListener<LocalMedia> {
         override fun onCancel() {
         }
