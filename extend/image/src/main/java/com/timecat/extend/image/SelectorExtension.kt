@@ -29,6 +29,7 @@ fun LocalMedia.savablePath(): String? {
     Log.d("LocalMedia", "原图路径:$originalPath")
     Log.d("LocalMedia", "----------------")
     return when {
+        availablePath != null -> availablePath
         path != null -> path
         else -> null
     }
